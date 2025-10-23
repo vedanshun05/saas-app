@@ -5,6 +5,7 @@ import { getAllCompanions } from "@/lib/actions/companion.actions";
 import { getSubjectColor } from "@/lib/utils";
 import { SearchParams } from "@/types"
 
+export const dynamic = 'force-dynamic';
 
 const CompanionsLibrary = async ({ searchParams }: SearchParams) => {
   const filters = await searchParams;
