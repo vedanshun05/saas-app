@@ -30,14 +30,15 @@ Chatalo (the codebase in this repository) is a full-stack Next.js app that demon
 
 ## Tech stack
 
-- Next.js (App Router)
-- React 19
-- TypeScript
-- Clerk (authentication)
-- Supabase (database + realtime)
-- Vapi / VPY Web SDK (AI / voice interaction)
-- Sentry (error monitoring)
-- Tailwind CSS (styles) and Radix UI primitives
+- Next.js (App Router) — https://nextjs.org/
+- React 19 — https://reactjs.org/
+- TypeScript — https://www.typescriptlang.org/
+- Clerk (authentication) — https://clerk.com/docs
+- Supabase (database + realtime) — https://supabase.com/docs
+- Vapi / VPY Web SDK (AI / voice interaction) — https://vapi.ai/ or https://www.vapi.ai/docs
+- Sentry (error monitoring) — https://sentry.io/for/javascript/
+- Tailwind CSS (styles) — https://tailwindcss.com/
+- Radix UI primitives — https://www.radix-ui.com/
 
 ## Local setup
 
