@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-
 import { Button } from "@/components/ui/button"
 import {
     Form,
@@ -15,7 +14,6 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-
 import {
     Select,
     SelectContent,
@@ -23,10 +21,10 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { subjects } from "@/constants"
-import { Textarea } from "./ui/textarea"
-import { createCompanion } from "@/lib/actions/companion.actions"
-import { redirect } from "next/navigation"
+import {subjects} from "@/constants";
+import {Textarea} from "@/components/ui/textarea";
+import {createCompanion} from "@/lib/actions/companion.actions";
+import {redirect} from "next/navigation";
 
 const formSchema = z.object({
     name: z.string().min(1, { message: 'Companion is required.' }),
