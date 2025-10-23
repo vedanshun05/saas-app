@@ -27,12 +27,12 @@ import {createCompanion} from "@/lib/actions/companion.actions";
 import {redirect} from "next/navigation";
 
 const formSchema = z.object({
-    name: z.string().min(1, { message: 'Companion is required.' }),
-    subject: z.string().min(1, { message: 'Subject is required.' }),
-    topic: z.string().min(1, { message: 'Topic is required.' }),
-    voice: z.string().min(1, { message: 'Voice is required.' }),
-    style: z.string().min(1, { message: 'Style is required.' }),
-    duration: z.coerce.number().min(1, { message: 'Duration is required.' }),
+    name: z.string().min(1, { message: 'Companion is required.'}),
+    subject: z.string().min(1, { message: 'Subject is required.'}),
+    topic: z.string().min(1, { message: 'Topic is required.'}),
+    voice: z.string().min(1, { message: 'Voice is required.'}),
+    style: z.string().min(1, { message: 'Style is required.'}),
+    duration: z.coerce.number().min(1, { message: 'Duration is required.'}),
 })
 
 const CompanionForm = () => {
@@ -54,7 +54,7 @@ const CompanionForm = () => {
         if(companion) {
             redirect(`/companions/${companion.id}`);
         } else {
-            console.log('failed to create a companion');
+            console.log('Failed to create a companion');
             redirect('/');
         }
     }
@@ -69,7 +69,11 @@ const CompanionForm = () => {
                         <FormItem>
                             <FormLabel>Companion name</FormLabel>
                             <FormControl>
-                                <Input placeholder="Enter the companion name" {...field} className="input" />
+                                <Input
+                                    placeholder="Enter the companion name"
+                                    {...field}
+                                    className="input"
+                                />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -114,7 +118,8 @@ const CompanionForm = () => {
                         <FormItem>
                             <FormLabel>What should the companion help with?</FormLabel>
                             <FormControl>
-                                <Textarea placeholder="Ex. Derivatives & Integrals"
+                                <Textarea
+                                    placeholder="Ex. Derivates & Integrals"
                                     {...field}
                                     className="input"
                                 />
@@ -123,6 +128,7 @@ const CompanionForm = () => {
                         </FormItem>
                     )}
                 />
+
                 <FormField
                     control={form.control}
                     name="voice"
@@ -136,7 +142,9 @@ const CompanionForm = () => {
                                     defaultValue={field.value}
                                 >
                                     <SelectTrigger className="input">
-                                        <SelectValue placeholder="Select the voice" />
+                                        <SelectValue
+                                            placeholder="Select the voice"
+                                        />
                                     </SelectTrigger>
                                     <SelectContent>
                                         <SelectItem value="male">
@@ -165,7 +173,9 @@ const CompanionForm = () => {
                                     defaultValue={field.value}
                                 >
                                     <SelectTrigger className="input">
-                                        <SelectValue placeholder="Select the style" />
+                                        <SelectValue
+                                            placeholder="Select the style"
+                                        />
                                     </SelectTrigger>
                                     <SelectContent>
                                         <SelectItem value="formal">
@@ -181,6 +191,7 @@ const CompanionForm = () => {
                         </FormItem>
                     )}
                 />
+
                 <FormField
                     control={form.control}
                     name="duration"
@@ -188,20 +199,18 @@ const CompanionForm = () => {
                         <FormItem>
                             <FormLabel>Estimated session duration in minutes</FormLabel>
                             <FormControl>
-                                <Input 
+                                <Input
                                     type="number"
-                                    placeholder="15" 
-                                    {...field} 
-                                    className="input" 
+                                    placeholder="15"
+                                    {...field}
+                                    className="input"
                                 />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
-                <Button type="submit" className="w-full cursor-pointer">
-                    Build Your Companion 
-                </Button>
+                <Button type="submit" className="w-full cursor-pointer">Build Your Companion</Button>
             </form>
         </Form>
     )
