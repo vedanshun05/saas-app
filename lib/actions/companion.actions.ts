@@ -78,7 +78,12 @@ export const getRecentSessions = async (limit = 10) => {
 
     if(error) throw new Error(error.message);
 
-    return data.map(({ companions }) => companions);
+    // Filter out null companions and remove duplicates
+    const companions = data.map(({ companions }) => companions).filter(Boolean);
+    const uniqueCompanions = Array.from(
+        new Map(companions.map((c: any) => [c.id, c])).values()
+    );
+    return uniqueCompanions;
 }
 
 export const getUserSessions = async (userId: string, limit = 10) => {
@@ -92,7 +97,12 @@ export const getUserSessions = async (userId: string, limit = 10) => {
 
     if(error) throw new Error(error.message);
 
-    return data.map(({ companions }) => companions);
+    // Filter out null companions and remove duplicates
+    const companions = data.map(({ companions }) => companions).filter(Boolean);
+    const uniqueCompanions = Array.from(
+        new Map(companions.map((c: any) => [c.id, c])).values()
+    );
+    return uniqueCompanions;
 }
 
 export const getUserCompanions = async (userId: string) => {
@@ -181,6 +191,10 @@ export const getBookmarkedCompanions = async (userId: string) => {
   if (error) {
     throw new Error(error.message);
   }
-  // We don't need the bookmarks data, so we return only the companions
-  return data.map(({ companions }) => companions);
+  // Filter out null companions and remove duplicates
+  const companions = data.map(({ companions }) => companions).filter(Boolean);
+  const uniqueCompanions = Array.from(
+    new Map(companions.map((c: any) => [c.id, c])).values()
+  );
+  return uniqueCompanions;
 };

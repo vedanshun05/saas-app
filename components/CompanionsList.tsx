@@ -14,7 +14,7 @@ import Image from "next/image";
 
 interface CompanionsListProps {
     title: string;
-    companions?: Companion[];
+    companions?: any[];
     classNames?: string;
 }
 
@@ -23,6 +23,9 @@ const CompanionsList = ({ title, companions, classNames }: CompanionsListProps) 
         <article className={cn('companion-list', classNames)}>
             <h2 className="font-bold text-3xl">{title}</h2>
 
+            {!companions || companions.length === 0 ? (
+                <p className="text-muted-foreground mt-4">No companions found.</p>
+            ) : (
             <Table>
                 <TableHeader>
                     <TableRow>
@@ -32,8 +35,10 @@ const CompanionsList = ({ title, companions, classNames }: CompanionsListProps) 
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {companions?.map(({id, subject, name, topic, duration}) => (
-                        <TableRow key={id}>
+                    {companions.map((companion, index) => {
+                        const {id, subject, name, topic, duration} = companion;
+                        return (
+                        <TableRow key={`${id}-${index}`}>
                             <TableCell>
                                 <Link href={`/companions/${id}`}>
                                     <div className="flex items-center gap-2">
@@ -78,9 +83,11 @@ const CompanionsList = ({ title, companions, classNames }: CompanionsListProps) 
                                 </div>
                             </TableCell>
                         </TableRow>
-                    ))}
+                        );
+                    })}
                 </TableBody>
             </Table>
+            )}
         </article>
     )
 }
